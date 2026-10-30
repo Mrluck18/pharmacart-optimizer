@@ -1,0 +1,6 @@
+{
+  "name": "@pharmacart/mobile",
+  "version": "0.0.0",
+  "private": true,
+  "description": "App React Native (Android) di PharmaCart Optimizer"
+}

@@ -1,0 +1,6 @@
+{
+  "name": "@pharmacart/backend",
+  "version": "0.0.0",
+  "private": true,
+  "description": "API Express, optimizer del carrello e validazione JIT"
+}

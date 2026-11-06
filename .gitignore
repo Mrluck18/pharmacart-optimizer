@@ -1,0 +1,28 @@
+# Dipendenze
+node_modules/
+
+# Build e output
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# Variabili d'ambiente (il template .env.example si versiona)
+.env
+.env.*
+!.env.example
+
+# Log
+*.log
+npm-debug.log*
+
+# Expo
+.expo/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+.vscode/

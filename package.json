@@ -13,11 +13,18 @@
     "node": ">=20"
   },
   "scripts": {
-    "test": "npm run test --workspaces --if-present",
-    "format": "prettier --write .",
-    "format:check": "prettier --check ."
+  "test": "npm run test --workspaces --if-present",
+  "format": "prettier --write .",
+  "format:check": "prettier --check .",
+  "lint": "eslint .",
+  "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
-    "prettier": "3.9.10"
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.14.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "3.9.10",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.1"
   }
 }

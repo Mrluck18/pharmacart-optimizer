@@ -5,6 +5,6 @@
   "description": "Tipi di dominio, modelli Mongoose e utility condivise",
   "scripts": {
   "typecheck": "tsc --noEmit -p .",
-  "test": "jest --passWithNoTests"
+  "test": "jest"
   }
 }

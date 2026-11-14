@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "description": "Tipi di dominio, modelli Mongoose e utility condivise",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
   "scripts": {
-  "typecheck": "tsc --noEmit -p .",
-  "test": "jest"
+    "typecheck": "tsc --noEmit -p .",
+    "test": "jest"
   }
 }

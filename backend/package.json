@@ -2,5 +2,12 @@
   "name": "@pharmacart/backend",
   "version": "0.0.0",
   "private": true,
-  "description": "API Express, optimizer del carrello e validazione JIT"
+  "description": "API Express, optimizer del carrello e validazione JIT",
+  "scripts": {
+    "typecheck": "tsc --noEmit -p .",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@pharmacart/shared": "*"
+  }
 }

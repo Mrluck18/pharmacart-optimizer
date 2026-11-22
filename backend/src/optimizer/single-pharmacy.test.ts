@@ -1,56 +1,17 @@
 import { describe, expect, it } from '@jest/globals';
-import type { CartItem, CartSolution, Offer, Pharmacy } from '@pharmacart/shared';
+import type { CartSolution, Pharmacy } from '@pharmacart/shared';
+import {
+  eFarma,
+  fullCart,
+  item,
+  loreto,
+  offer,
+  offers,
+  pharmacies,
+  redcare,
+  without,
+} from './fixtures';
 import { findBestSinglePharmacy } from './single-pharmacy';
-
-const redcare: Pharmacy = {
-  id: 'redcare',
-  name: 'Redcare',
-  baseUrl: 'https://redcare.example',
-  shippingCost: 4.9,
-  freeShippingThreshold: 39,
-};
-const eFarma: Pharmacy = {
-  id: 'efarma',
-  name: 'eFarma',
-  baseUrl: 'https://efarma.example',
-  shippingCost: 3.9,
-  freeShippingThreshold: 29,
-};
-const loreto: Pharmacy = {
-  id: 'loreto',
-  name: 'Farmacia Loreto',
-  baseUrl: 'https://loreto.example',
-  shippingCost: 5.5,
-  freeShippingThreshold: 49,
-};
-const pharmacies = [redcare, eFarma, loreto];
-
-const offer = (pharmacyId: string, productId: string, price: number): Offer => ({
-  productId,
-  pharmacyId,
-  url: `https://${pharmacyId}.example/p/${productId}`,
-  price,
-  available: true,
-  lastScrapedAt: new Date('2026-10-28T03:00:00Z'),
-});
-
-const offers: Offer[] = [
-  offer('redcare', 'whey', 36.9),
-  offer('redcare', 'creatina', 12.9),
-  offer('redcare', 'magnesio', 11.5),
-  offer('efarma', 'whey', 29.5),
-  offer('efarma', 'creatina', 17.5),
-  offer('efarma', 'magnesio', 15.9),
-  offer('loreto', 'whey', 32),
-  offer('loreto', 'creatina', 16),
-  offer('loreto', 'magnesio', 14),
-];
-
-const without = (all: Offer[], pharmacyId: string, productId: string): Offer[] =>
-  all.filter((o) => o.pharmacyId !== pharmacyId || o.productId !== productId);
-
-const item = (productId: string, quantity = 1): CartItem => ({ productId, quantity });
-const fullCart = [item('whey'), item('creatina'), item('magnesio')];
 
 const chosenPharmacy = (solution: CartSolution | null) => solution?.orders[0]?.pharmacyId;
 

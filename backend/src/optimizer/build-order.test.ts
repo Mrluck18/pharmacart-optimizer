@@ -1,6 +1,7 @@
 import { describe, expect, it } from '@jest/globals';
-import type { OrderLine, Pharmacy } from '@pharmacart/shared';
+import type { OrderLine } from '@pharmacart/shared';
 import { buildOrder } from './build-order';
+import { redcare } from './fixtures';
 
 const redcare: Pharmacy = {
   id: 'redcare',

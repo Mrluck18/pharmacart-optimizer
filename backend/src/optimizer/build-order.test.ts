@@ -3,14 +3,6 @@ import type { OrderLine } from '@pharmacart/shared';
 import { buildOrder } from './build-order';
 import { redcare } from './fixtures';
 
-const redcare: Pharmacy = {
-  id: 'redcare',
-  name: 'Redcare',
-  baseUrl: 'https://redcare.example',
-  shippingCost: 4.9,
-  freeShippingThreshold: 39,
-};
-
 const line = (productId: string, unitPrice: number, quantity = 1): OrderLine => ({
   productId,
   quantity,

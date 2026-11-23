@@ -1,40 +1,22 @@
 import type { CartItem, CartSolution, Offer, Order, OrderLine, Pharmacy } from '@pharmacart/shared';
 import { buildOrder } from './build-order';
-
-const offerKey = (pharmacyId: string, productId: string) => `${pharmacyId}:${productId}`;
-
-const indexAvailableOffers = (offers: readonly Offer[]): Map<string, Offer> => {
-  const index = new Map<string, Offer>();
-
-  for (const offer of offers) {
-    if (offer.available) {
-      index.set(offerKey(offer.pharmacyId, offer.productId), offer);
-    }
-  }
-
-  return index;
-};
+import { indexAvailableOffers, type OfferIndex } from './offer-index';
 
 /** Righe d'ordine per una farmacia, o null se non ha disponibili tutti i prodotti. */
 const buildLines = (
   items: readonly CartItem[],
   pharmacyId: string,
-  offerIndex: ReadonlyMap<string, Offer>,
+  offerIndex: OfferIndex,
 ): OrderLine[] | null => {
   const lines: OrderLine[] = [];
 
   for (const item of items) {
-    const offer = offerIndex.get(offerKey(pharmacyId, item.productId));
-    if (offer === undefined) {
+    const line = offerIndex.lineFor(item, pharmacyId);
+    if (line === undefined) {
       return null;
     }
 
-    lines.push({
-      productId: item.productId,
-      quantity: item.quantity,
-      unitPrice: offer.price,
-      url: offer.url,
-    });
+    lines.push(line);
   }
 
   return lines;
